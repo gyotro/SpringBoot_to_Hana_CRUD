@@ -4,7 +4,7 @@ applications:
     path: target/demoSap-0.0.1.jar
     health-check-type: process
     random-route: false
-    memory: 2048MB
+    memory: 1024MB
     buildpack: java_buildpack
     env:
       SPRING_PROFILES_ACTIVE: cloud
