@@ -1,6 +1,6 @@
 package com.hanaToCF.demoSap.controller;
 
-import com.hanaToCF.demoSap.model.MEASURESB;
+import com.hanaToCF.demoSap.model.Measures;
 import com.hanaToCF.demoSap.repo.MeasuresRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +18,13 @@ public class MeasureController {
     MeasuresRepo mRepo;
 
     @GetMapping("/measure")
-    public List<MEASURESB> getMeasures(){
-        List<MEASURESB> measures = new ArrayList<>();
+    public List<Measures> getMeasures(){
         log.info("Received Get request");
-        mRepo.findAll().forEach(measures::add);
-        return measures;
+        return new ArrayList<>(mRepo.findAll());
     }
 
     @GetMapping("/measure/{id}")
-    public MEASURESB getMeasures(@PathVariable("id") Long id){
+    public Measures getMeasures(@PathVariable("id") Long id){
         log.info("Received Get request for id: {}", id);
         return mRepo.findById(id).orElse(null);
     }
@@ -38,7 +36,7 @@ public class MeasureController {
     }
 
     @PostMapping("/measure")
-    public MEASURESB postMeasures(@RequestBody MEASURESB measure){
+    public Measures postMeasures(@RequestBody Measures measure){
         log.info("Received post request with body: {}", measure.toString());
         return mRepo.save(measure);
     }

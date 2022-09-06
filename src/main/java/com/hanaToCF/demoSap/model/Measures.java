@@ -14,13 +14,17 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "MEASURESB")
-public class MEASURESB {
+public class Measures {
+
     /* spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
        spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
        permits supporting to non-standard tables name, i.e. lowercase or camelCase
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //requires IDENTITY automatic definition on HANA
+    /*
+    Remember to put backticks before and after "name" in @Column
+     */
     @Column(name = "`id`")
     private long id;
     @Column(name = "`thing`", length = 32)
@@ -36,7 +40,7 @@ public class MEASURESB {
 
     @Override
     public String toString() {
-        return "Measuresb{" +
+        return "Measures{" +
                 "id=" + id +
                 ", thing='" + thing + '\'' +
                 ", pst='" + pst + '\'' +
