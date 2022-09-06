@@ -1,0 +1,14 @@
+---
+applications:
+  - name: demoSAPCF
+    path: target/demoSap-0.0.1.jar
+    health-check-type: process
+    random-route: false
+    memory: 2048MB
+    buildpack: java_buildpack
+    env:
+      SPRING_PROFILES_ACTIVE: cloud
+      JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{enabled: true}'
+      JBP_CONFIG_OPEN_JDK_JRE: "{ jre: { version: 11.+ }}"
+    services:
+      - hdi_iot2hana
